@@ -82,6 +82,14 @@ module URBANopt
         # deep clone of @@osw before we configure it
         osw = Marshal.load(Marshal.dump(@@osw))
         
+
+
+        ### get properties out of the feature
+        #area = feature.area
+        #building_type = feature.building_type
+        cooling_vac = feature.cooling_vac
+        heating_vac = feature.heating_vac
+
         # now we have the feature, we can look up its properties and set arguments in the OSW
         OpenStudio::Extension.set_measure_argument(osw, 'urban_geometry_creation', 'geojson_file', scenario.feature_file.path)
         OpenStudio::Extension.set_measure_argument(osw, 'urban_geometry_creation', 'feature_id', feature_id)
@@ -91,6 +99,11 @@ module URBANopt
         OpenStudio::Extension.set_measure_argument(osw, 'default_feature_reports', 'feature_name', feature_name)
         OpenStudio::Extension.set_measure_argument(osw, 'default_feature_reports', 'feature_type', feature_type)
         
+        
+        OpenStudio::Extension.set_measure_argument(osw, 'create_typical_building_from_model', 'htg_src', heating_vac)
+        OpenStudio::Extension.set_measure_argument(osw, 'create_typical_building_from_model', 'clg_src', cooling_vac)
+
+
         osw[:name] = feature_name
         osw[:description] = feature_name
         

@@ -26,6 +26,12 @@
         "surrounding_buildings": "None"
       }
     },{
+			"measure_dir_name": "create_typical_building_from_model",
+			"arguments": {
+        "htg_src": null,
+        "clg_src": null
+      }	
+	},{
 			"measure_dir_name": "ReduceElectricEquipmentLoadsByPercentage",
 			"arguments": {
         "__SKIP__": true,
