@@ -32,6 +32,7 @@ require 'openstudio/extension'
 require 'openstudio/extension/rake_task'
 require 'urbanopt/scenario'
 require 'urbanopt/geojson'
+require "json"
 
 module URBANopt
   module ExampleGeoJSONProject
@@ -75,7 +76,7 @@ def baseline_scenario
   csv_file = File.join(File.dirname(__FILE__), 'baseline_scenario.csv')
   mapper_files_dir = File.join(File.dirname(__FILE__), 'mappers/')
   num_header_rows = 1
-  
+    
   runner = OpenStudio::Measure::OSRunner.new(OpenStudio::WorkflowJSON.new)
   feature_file = URBANopt::GeoJSON::GeoFile.from_file(feature_file_path)
   scenario = URBANopt::Scenario::ScenarioCSV.new(name, root_dir, run_dir, feature_file, mapper_files_dir, csv_file, num_header_rows)

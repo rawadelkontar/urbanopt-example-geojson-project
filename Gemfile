@@ -37,9 +37,10 @@ else
   gem 'urbanopt-scenario', github: 'URBANopt/urbanopt-scenario-gem', branch: 'post_process'
 end
 
+
 if allow_local && File.exists?('../urbanopt-geojson-gem')
   # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
-  gem 'urbanopt-geojson', path: '../urbanopt-geojson-gem'
+  gem 'urbanopt-geojson', path: '../urbanopt-scenario-gem'
 else
   gem 'urbanopt-geojson', github: 'urbanopt/urbanopt-geojson-gem', branch: 'example_project_fixes'
 end
